@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Swathi Bommidi | Java Full Stack Developer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* professional container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .navbar {
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.3px;
+      color: #0f172a;
+    }
+    .logo span {
+      color: #3b82f6;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e293b;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #3b82f6;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: #1e293b;
+    }
+
+    
+    .hero {
+      padding: 3.5rem 0 2.5rem;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .hero-info {
+      flex: 2;
+    }
+    .hero-badge {
+      background: #eef2ff;
+      color: #1e40af;
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+    .hero-info h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #4b5563;
+      margin-bottom: 1.2rem;
+      border-left: 3px solid #3b82f6;
+      padding-left: 1rem;
+    }
+    .contact-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .contact-chip {
+      background: white;
+      border: 1px solid #e2e8f0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1f2937;
+      transition: 0.1s;
+    }
+    .contact-chip i {
+      color: #3b82f6;
+      font-size: 0.85rem;
+    }
+    .contact-chip a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0 1rem;
+    }
+    .btn {
+      padding: 0.7rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: #0f172a;
+      color: white;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: #1e293b;
+    }
+    .btn-outline:hover {
+      border-color: #3b82f6;
+      color: #3b82f6;
+      background: #f8fafc;
+    }
+    .avatar {
+      width: 170px;
+      height: 170px;
+      background: #e2e8f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: #1e293b;
+      box-shadow: 0 15px 25px -8px rgba(0,0,0,0.1);
+      border: 3px solid white;
+    }
+
+   
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid #edf2f7;
+    }
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+      color: #0f172a;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50%;
+      height: 3px;
+      background: #3b82f6;
+      border-radius: 2px;
+    }
+
+ 
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid #eef2ff;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px -12px rgba(0,0,0,0.1);
+      border-color: #cbd5e1;
+    }
+    .card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #0f172a;
+    }
+    .tech-badge {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.8rem 0;
+    }
+    .badge {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+    }
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+    .skill-tag {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 0.35rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #334155;
+    }
+    .skill-tag i {
+      margin-right: 5px;
+      color: #3b82f6;
+      font-size: 0.75rem;
+    }
+    .exp-item, .edu-item {
+      margin-bottom: 1.2rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+      margin-top: 0.6rem;
+    }
+    li {
+      margin: 0.4rem 0;
+      font-size: 0.9rem;
+    }
+    .strength-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .strength-item {
+      background: white;
+      border: 1px solid #e2e8f0;
+      padding: 0.5rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #4b5563;
+      font-size: 0.8rem;
+      background: white;
+      border-top: 1px solid #eef2ff;
+    }
+    @media (max-width: 780px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .hero-info h1 {
+        font-size: 2rem;
+      }
+      .container {
+        padding: 0 1.2rem;
+      }
+    }
+    .icon-text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .company-name {
+      font-weight: 600;
+      color: #3b82f6;
+      margin: 0.25rem 0 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="container nav-flex">
+    <div class="logo">Swathi</div>
+    <div class="menu-toggle" id="mobileMenuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<main>
+
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-info">
+        <div class="hero-badge">Java Full Stack Developer</div>
+        <h1>Bommidi Swathi</h1>
+        <div class="hero-title">Building robust web apps with Spring Boot & modern frontends</div>
+        <div class="contact-details">
+          <div class="contact-chip"><i class="fas fa-envelope"></i> swathi.bommidi1602@gmail.com</div>
+          <div class="contact-chip"><i class="fas fa-phone-alt"></i> +91 8790642042</div>
+          <div class="contact-chip"><i class="fas fa-map-marker-alt"></i> Andhra Pradesh, India</div>
+          <div class="contact-chip"><i class="fab fa-linkedin"></i> linkedin.com/in/swathi-bommidi</div>
+          <div class="contact-chip"><i class="fab fa-github"></i> github.com/swathi-1610</div>
+        </div>
+        <div class="btn-group">
+          <a href="#" class="btn btn-primary" id="resumeBtn"><i class="fas fa-download"></i> Resume</a>
+          <a href="#projects" class="btn btn-outline"><i class="fas fa-arrow-right"></i> View Projects</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <div class="avatar">SB</div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="container" style="margin-bottom: 1rem; margin-top: -1.2rem;">
+    <div class="card" style="background: #ffffff; border-left: 4px solid #3b82f6;">
+      <p style="font-weight: 500; color: #1e293b;"><strong>Professional Summary</strong><br>Java Full Stack Developer with hands-on experience in Core Java, Spring Boot, REST API development, and MySQL. Skilled in building scalable web applications using MVC architecture and developing end-to-end full stack solutions. Strong foundation in Object-Oriented Programming (OOP) and problem-solving with a passion for learning new technologies.</p>
+    </div>
+  </div>
+
+  
+  <section id="experience">
+    <div class="container">
+      <div class="section-title">Work Experience</div>
+      <div class="card-grid" style="grid-template-columns: 1fr;">
+        <div class="card">
+          <div class="icon-text">
+            <i class="fas fa-laptop-code" style="font-size: 1.8rem; color: #3b82f6;"></i>
+            <h3 style="margin:0;">Java Full Stack Trainee</h3>
+          </div>
+          <div class="company-name">Codegana IT Solutions</div>
+          <ul>
+            <li>Completed hands-on training in Java Full Stack Development</li>
+            <li>Developed real-time applications using Spring Boot, Servlets, and JSP</li>
+            <li>Built REST APIs and integrated MySQL database</li>
+            <li>Worked on frontend technologies including HTML, CSS, and JavaScript</li>
+            <li>Practiced version control using Git and GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <section id="projects">
+    <div class="container">
+      <div class="section-title">Featured Projects</div>
+      <div class="card-grid">
+        <div class="card">
+          <h3>🏥 Hospital Management System</h3>
+          <div class="tech-badge"><span class="badge">Spring Boot</span><span class="badge">REST APIs</span><span class="badge">MySQL/JPA</span></div>
+          <p>Developed RESTful APIs to manage doctor and patient data. Full CRUD operations, integrated MySQL using JPA/Hibernate, tested with Postman.</p>
+        </div>
+        <div class="card">
+          <h3>👩‍💼 Employee Management System</h3>
+          <div class="tech-badge"><span class="badge">JDBC</span><span class="badge">Servlets</span><span class="badge">JSP</span><span class="badge">MySQL</span></div>
+          <p>Dynamic web application using MVC architecture. Implemented CRUD operations for employee records with JDBC connectivity.</p>
+        </div>
+        <div class="card">
+          <h3>📌 Job Portal Management System</h3>
+          <div class="tech-badge"><span class="badge">Spring Boot</span><span class="badge">Servlets</span><span class="badge">JSP</span><span class="badge">MySQL</span></div>
+          <p>Job portal with authentication and role-based access. Job posting, search, and application tracking with dynamic JSP pages.</p>
+        </div>
+        <div class="card">
+          <h3>📱 PayFlow Premium (PhonePe-like UI)</h3>
+          <div class="tech-badge"><span class="badge">HTML/CSS</span><span class="badge">Bootstrap</span></div>
+          <p>Responsive digital payment interface focused on UI/UX and real-world design.</p>
+        </div>
+        <div class="card">
+          <h3>📸 Instagram Login & Registration</h3>
+          <div class="tech-badge"><span class="badge">HTML</span><span class="badge">CSS</span></div>
+          <p>Designed responsive UI similar to Instagram, focusing on layout and user experience.</p>
+        </div>
+        <div class="card">
+          <h3>🛠 On-Demand Services App</h3>
+          <div class="tech-badge"><span class="badge">Java/Kotlin</span><span class="badge">Android Studio</span><span class="badge">PostgreSQL</span></div>
+          <p>Mobile application for booking nearby services: login, search, booking, and tracking features (Academic Project).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-title">Technical Skills</div>
+      <div class="card" style="padding: 1.8rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.5rem;">
+          <div>
+            <strong><i class="fas fa-code"></i> Programming Languages</strong>
+            <div class="skill-cloud"><span class="skill-tag">Java</span><span class="skill-tag">Python (Basics)</span></div>
+          </div>
+          <div>
+            <strong><i class="fas fa-server"></i> Backend Technologies</strong>
+            <div class="skill-cloud"><span class="skill-tag">Core Java</span><span class="skill-tag">Advanced Java</span><span class="skill-tag">JDBC</span><span class="skill-tag">Servlets & JSP</span><span class="skill-tag">Spring Boot</span><span class="skill-tag">REST APIs</span></div>
+          </div>
+          <div>
+            <strong><i class="fas fa-paintbrush"></i> Frontend Technologies</strong>
+            <div class="skill-cloud"><span class="skill-tag">HTML5/CSS3</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Bootstrap</span></div>
+          </div>
+          <div>
+            <strong><i class="fas fa-database"></i> Database</strong>
+            <div class="skill-cloud"><span class="skill-tag">MySQL</span></div>
+          </div>
+          <div>
+            <strong><i class="fas fa-tools"></i> Tools & IDEs</strong>
+            <div class="skill-cloud"><span class="skill-tag">Git & GitHub</span><span class="skill-tag">Eclipse</span><span class="skill-tag">VS Code</span><span class="skill-tag">Android Studio</span><span class="skill-tag">Postman</span></div>
+          </div>
+          <div>
+            <strong><i class="fas fa-microchip"></i> Core Concepts</strong>
+            <div class="skill-cloud"><span class="skill-tag">OOP</span><span class="skill-tag">MVC Architecture</span><span class="skill-tag">Exception Handling</span><span class="skill-tag">Collections</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="education">
+    <div class="container">
+      <div class="section-title">Education & Certifications</div>
+      <div class="card-grid">
+        <div class="card">
+          <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+          <div class="edu-item"><strong>B.Tech (CSE) 2025</strong><br>SRK Institute of Technology, Vijayawada<br>CGPA: 8.12</div>
+          <div class="edu-item"><strong>Diploma (CME) 2020</strong><br>SMT B Seetha Polytechnic, Bhimavaram<br>CGPA: 9.3</div>
+          <div class="edu-item"><strong>SSC 2017</strong><br>ZPP High School Gollavanithippa<br>CGPA: 8.7</div>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-certificate"></i> Certifications</h3>
+          <ul style="list-style: none; padding-left: 0;">
+            <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.75rem;"></i> Python Programming - CS CODENZ</li>
+            <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.75rem;"></i> Machine Learning - CS CODENZ</li>
+            <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.75rem;"></i> Data Analytics - CS CODENZ</li>
+            <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.75rem;"></i> Internship: Military Expenditure Data Analysis (Python, Pandas, NumPy)</li>
+            <li><i class="fas fa-trophy" style="color:#3b82f6;"></i> National-Level Technical Quiz on Python</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section style="border-bottom: none; padding-top: 1rem;">
+    <div class="container">
+      <div class="section-title">Strengths</div>
+      <div class="strength-list">
+        <div class="strength-item"><i class="fas fa-bolt"></i> Quick Learner</div>
+        <div class="strength-item"><i class="fas fa-puzzle-piece"></i> Strong Problem Solving</div>
+        <div class="strength-item"><i class="fas fa-sync-alt"></i> Adaptability</div>
+        <div class="strength-item"><i class="fas fa-chalkboard-teacher"></i> Willingness to Learn</div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer id="contact">
+    <div class="container">
+      <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
+        <a href="mailto:swathi.bommidi1602@gmail.com" style="color:#3b82f6; text-decoration: none;"><i class="fas fa-envelope"></i> swathi.bommidi1602@gmail.com</a>
+        <a href="#" style="color:#3b82f6; text-decoration: none;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="#" style="color:#3b82f6; text-decoration: none;"><i class="fab fa-github"></i> GitHub</a>
+        <span><i class="fas fa-phone-alt"></i> +91 8790642042</span>
+      </div>
+      <p style="color: #6c757d;">© 2025 Bommidi Swathi — Java Full Stack Developer Portfolio</p>
+    </div>
+  </footer>
+</main>
+
+<script>
+ 
+  const toggleBtn = document.getElementById('mobileMenuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if(toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+
+  
+  document.querySelectorAll('.nav-links a, .btn-outline[href="#projects"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href && href.startsWith('#')) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetSection = document.getElementById(targetId);
+        if(targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if(navLinks.classList.contains('show')) navLinks.classList.remove('show');
+        }
+      }
+    });
+  });
+
+  const resumeBtn = document.getElementById('resumeBtn');
+  if(resumeBtn) {
+    resumeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert("Professional resume ready to download. You can request a PDF copy directly.");
+    });
+  }
+</script>
+</body>
+</html>
